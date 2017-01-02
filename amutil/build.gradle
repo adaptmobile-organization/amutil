@@ -68,7 +68,7 @@ task copyAAR(type: Copy) {
     }
 }
 */
-
+/*
 def libraryGroupId = 'dk.adaptmobile'
 def libraryArtifactId = 'amutil'
 def libraryVersion = '1.2.8'
@@ -103,3 +103,4 @@ artifactory {
         }
     }
 }
+*/
