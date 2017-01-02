@@ -42,7 +42,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-group='com.bitbucket.adaptmobile'
+group='com.github.adaptmobile'
 
 //Create maven repo - upload using the deploy script
 apply plugin: 'maven'
