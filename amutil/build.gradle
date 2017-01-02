@@ -1,0 +1,105 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+apply plugin: 'com.github.dcendents.android-maven'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        customer {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        test {
+            resources {
+                srcDir "test"
+            }
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.ivankocijan:MagicViews:1.0.4@aar'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.intellij:annotations:+@jar'
+
+    // Required -- JUnit 4 framework
+    testCompile 'junit:junit:4.12'
+}
+
+group='com.bitbucket.adaptmobile'
+
+//Create maven repo - upload using the deploy script
+apply plugin: 'maven'
+/*
+uploadArchives {
+    repositories.mavenDeployer {
+        def deployPath = file(getProperty('aar.deployPath'))
+        repository(url: "file://${deployPath.absolutePath}")
+        pom.project {
+            groupId 'com.adaptmobile'
+            artifactId 'amutil'
+            version '1.2.7'
+            packaging = 'aar'
+        }
+    }
+}
+
+task copyAAR(type: Copy) {
+    from('build/outputs/aar/library-customer.aar')
+    into(System.getProperty("user.home") + '/Documents/')
+    rename { String fileName ->
+        fileName.replace('library-customer', 'amutil-customer')
+    }
+}
+*/
+
+def libraryGroupId = 'dk.adaptmobile'
+def libraryArtifactId = 'amutil'
+def libraryVersion = '1.2.8'
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId libraryGroupId
+            version libraryVersion
+            artifactId libraryArtifactId
+
+            artifact("$buildDir/outputs/aar/${libraryArtifactId}-release.aar")
+        }
+    }
+}
+
+artifactory {
+    contextUrl = 'http://192.168.1.160:8081/artifactory'
+    publish {
+        repository {
+            repoKey = 'libs-release-local'
+
+            username = arti_user
+            password = arti_pass
+        }
+        defaults {
+            publications('aar')
+            publishArtifacts = true
+
+            properties = ['qa.level': 'basic', 'q.os': 'android', 'dev.team': 'core']
+            publishPom = true
+        }
+    }
+}
