@@ -9,8 +9,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AMDateUtilTest.class,
-        CheckTest.class })
+        AMDateUtilTest.class })
 
 public class TestSuite {
 }
