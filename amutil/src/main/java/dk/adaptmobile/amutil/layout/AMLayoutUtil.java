@@ -1,6 +1,8 @@
 package dk.adaptmobile.amutil.layout;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -15,6 +17,7 @@ public class AMLayoutUtil {
 
     /**
      * Returns the width of the screen in pixels
+     *
      * @param context A context
      * @return Screen with in pixels
      */
@@ -24,6 +27,7 @@ public class AMLayoutUtil {
 
     /**
      * Returns the height of the screen in pixels
+     *
      * @param context A context
      * @return Screen height in pixels
      */
@@ -84,5 +88,11 @@ public class AMLayoutUtil {
                 return result;
             }
         }
+    }
+
+    public static Rect getVisibleFrame(Activity activity) {
+        Rect rect = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
+        return rect;
     }
 }
