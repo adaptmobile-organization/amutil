@@ -31,6 +31,10 @@ android {
         }
         main { assets.srcDirs = ['src/main/assets', 'src/test/assets/'] }
     }
+
+    //used for robolectric (because robolectric 3.0 only supports API 21 and httpclient was removed in API 23 and this project is running API 25)
+    useLibrary 'org.apache.http.legacy'
+
 }
 
 dependencies {
@@ -42,6 +46,12 @@ dependencies {
     // Test dependencies
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile "org.robolectric:robolectric:3.0"
+    testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.6'
+    testCompile 'org.powermock:powermock-module-junit4-rule:1.6.6'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.6'
+    testCompile 'org.powermock:powermock-classloading-xstream:1.6.6'
 }
 
 //add javadocs
