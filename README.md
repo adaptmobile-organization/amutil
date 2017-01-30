@@ -2,7 +2,7 @@
 
 ## Installing
 
-### Add jitpack repository to top (project) build.gradle file:
+#### Add jitpack repository to top (project) build.gradle file:
 
     maven { url 'https://jitpack.io' }
 
@@ -14,7 +14,7 @@
         }
     }
 
-### Add dependency to app (module) build.gradle file:
+#### Add dependency to app (module) build.gradle file:
 
     compile 'com.github.adaptmobile-organization:amutil:version'
 
