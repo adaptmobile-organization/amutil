@@ -20,14 +20,14 @@ public class AMIntentUtil {
     public static void emailIntent(Context context, String email, String subject) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/html");
-        intent.putExtra(Intent.EXTRA_BCC, email);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         try {
             if (isIntentAvailable(context, intent)) {
                 context.startActivity(Intent.createChooser(intent, "Send Email"));
             }
-        } catch (Exception e) {
-            //handle failed email sending
+        } catch (Exception var5) {
+
         }
     }
 
@@ -85,8 +85,10 @@ public class AMIntentUtil {
         }
     }
 
-    /** Open another app.
-     * @param context current Context, like Activity, App, or Service
+    /**
+     * Open another app.
+     *
+     * @param context     current Context, like Activity, App, or Service
      * @param packageName the full package name of the app to open
      * @return true if likely successful, false if unsuccessful
      */
