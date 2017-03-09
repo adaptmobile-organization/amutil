@@ -30,7 +30,7 @@ public class AMKeyboardUtil {
      * Shows the softkeyboard
      * @param activity The current activity
      */
-    public static void showSoftKeyboardV2(Activity activity) {
+    public static void showSoftKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
     }
