@@ -1,5 +1,6 @@
 package dk.adaptmobile.amutil.date;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -60,7 +61,25 @@ public class AMDateUtil {
             SimpleDateFormat format = new SimpleDateFormat(dateFormat, locale);
             return format.format(date);
         }
+    }
 
+    /**
+     * Changes the format of a given date
+     * @param date The date to change format of
+     * @param formatTo The format to change the date to
+     * @param formatFrom The format to change the date from
+     * @return The date formatted
+     */
+    public static String changeFormattedDate(String date, String formatTo, String formatFrom) {
+        SimpleDateFormat simpledateformat = new SimpleDateFormat(formatFrom, getDanishLocale());
+        Date dateObj = null;
+        try {
+            dateObj = simpledateformat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return new SimpleDateFormat(formatTo, getDanishLocale()).format(dateObj);
     }
 
     public static Locale getDanishLocale() {
@@ -70,4 +89,6 @@ public class AMDateUtil {
     public static Locale getDefaultLocale() {
         return Locale.getDefault();
     }
+
+
 }

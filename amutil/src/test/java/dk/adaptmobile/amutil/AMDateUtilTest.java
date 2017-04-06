@@ -1,15 +1,13 @@
 package dk.adaptmobile.amutil;
 
-import android.text.format.DateUtils;
-
 import org.junit.Test;
-
 
 import java.util.Locale;
 
 import dk.adaptmobile.amutil.date.AMDateUtil;
 
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 
 /**
  * Created by bjarkeseverinsen on 05/01/2017.
@@ -68,5 +66,13 @@ public class AMDateUtilTest {
         assertEquals("fredag 06-01-2017 16:00", januaryFifth2017);
     }
 
+    @Test
+    public void testChangeFormattedDate() {
+        String formatDateFrom = "12/12/1989";
+
+        String date = AMDateUtil.changeFormattedDate(formatDateFrom, "yyyy-MM-dd", "dd/MM/yyyy");
+
+        assertEquals("1989-12-12", date);
+    }
 
 }
