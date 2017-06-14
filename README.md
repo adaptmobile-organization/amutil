@@ -21,7 +21,7 @@
   Example:
     
     dependencies {
-        compile 'com.github.adaptmobile-organization:amutil:1.2.0'
+        compile 'com.github.adaptmobile-organization:amutil:1.2.1'
     }
 
 ## Development
