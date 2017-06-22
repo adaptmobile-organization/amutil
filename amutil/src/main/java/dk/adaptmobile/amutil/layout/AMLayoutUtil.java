@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -45,7 +46,18 @@ public class AMLayoutUtil {
         return (int) (dp * screenDensity);
     }
 
+    public static double getScreenInches(Activity activity){
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        double x = Math.pow(dm.widthPixels / dm.xdpi, 2);
+        double y = Math.pow(dm.heightPixels / dm.ydpi, 2);
+        double screenInches = Math.sqrt(x+y);
 
+        screenInches=  (double)Math.round(screenInches * 10) / 10;
+
+        return screenInches;
+    }
+    
     public static void onGlobalLayout(final View view, final OnCompleteCallback onCompleteCallback) {
         view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
