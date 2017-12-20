@@ -4,14 +4,14 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.2"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 2
-        versionName "1.1.2"
+        versionName "2.0.4-beta"
     }
     buildTypes {
         release {
@@ -37,22 +37,26 @@ android {
 
 }
 
+ext {
+    supportLibVersion = '27.0.2'
+    playLibVersion = '11.8.0'
+}
+
 dependencies {
-    compileOnly 'com.android.support:appcompat-v7:25.4.0'
-    compileOnly 'com.ivankocijan:MagicViews:1.0.4@aar'
-    compileOnly 'com.android.support:recyclerview-v7:25.4.0'
-    compileOnly 'com.intellij:annotations:+@jar'
+    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
+    implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
+    implementation 'com.intellij:annotations:12.0@jar'
 
     // Test dependencies
-    testCompileOnly 'junit:junit:4.12'
-    testCompileOnly 'org.mockito:mockito-core:1.10.19'
-    testCompileOnly "org.robolectric:robolectric:3.0"
-    testCompileOnly 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
-    testCompileOnly 'org.powermock:powermock-module-junit4:1.6.6'
-    testCompileOnly 'org.powermock:powermock-module-junit4-rule:1.6.6'
-    testCompileOnly 'org.powermock:powermock-api-mockito:1.6.6'
-    testCompileOnly 'org.powermock:powermock-classloading-xstream:1.6.6'
-    
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation "org.robolectric:robolectric:3.0"
+    testImplementation 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
+    testImplementation 'org.powermock:powermock-module-junit4:1.6.6'
+    testImplementation 'org.powermock:powermock-module-junit4-rule:1.6.6'
+    testImplementation 'org.powermock:powermock-api-mockito:1.6.6'
+    testImplementation 'org.powermock:powermock-classloading-xstream:1.6.6'
+
 }
 
 //add javadocs
