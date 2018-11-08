@@ -67,5 +67,28 @@ public class AMLTest {
         assertEquals("0", tagNumber.msg);
     }
 
+    @Test
+    public void ogNullTest() throws Exception {
+        L.og(null);
+        List<ShadowLog.LogItem> logs = ShadowLog.getLogs();
+
+        ShadowLog.LogItem message = logs.get(0);
+        assertEquals(Log.DEBUG, message.type);
+        assertEquals(this.getClass().getName(), message.tag);
+        assertEquals("null", message.msg);
+    }
+
+    @Test
+    public void ogTagNullTest() throws Exception {
+        L.og(null, null);
+
+        List<ShadowLog.LogItem> logs = ShadowLog.getLogs();
+
+        ShadowLog.LogItem tagNumber = logs.get(0);
+        assertEquals(Log.DEBUG, tagNumber.type);
+        assertEquals("null", tagNumber.tag);
+        assertEquals("null", tagNumber.msg);
+    }
+
 
 }

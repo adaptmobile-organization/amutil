@@ -26,7 +26,11 @@
 
 ## Development
 
-  Push a new/the next tag for a new version of amutil on jitpack
+  After you have committed your changes push a new/the next tag for a new version of amutil on jitpack
+  ```
+    git tag -a 0.0.0 
+    git push origin 0.0.0
+  ```
 
 ## Jitpack
 

@@ -10,7 +10,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 28
         versionCode 2
-        versionName "1.1.2"
+        versionName "2.1.0"
     }
     buildTypes {
         release {
@@ -36,9 +36,9 @@ android {
 
 }
 
+
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.ivankocijan:MagicViews:1.0.4@aar'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.intellij:annotations:+@jar'
 
@@ -51,7 +51,7 @@ dependencies {
     testImplementation 'org.powermock:powermock-module-junit4-rule:1.6.6'
     testImplementation 'org.powermock:powermock-api-mockito:1.6.6'
     testImplementation 'org.powermock:powermock-classloading-xstream:1.6.6'
-    
+
 }
 
 //add javadocs

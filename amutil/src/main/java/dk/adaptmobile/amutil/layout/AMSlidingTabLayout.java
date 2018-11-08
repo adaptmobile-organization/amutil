@@ -12,8 +12,6 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ivankocijan.magicviews.views.MagicTextView;
-
 
 public class AMSlidingTabLayout extends HorizontalScrollView {
 
@@ -147,7 +145,7 @@ public class AMSlidingTabLayout extends HorizontalScrollView {
      * view is not set via {@link #setCustomTabView(int, int)}.
      */
     protected TextView createDefaultTabView(Context context) {
-        MagicTextView textView = new MagicTextView(context);
+        TextView textView = new TextView(context);
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, TAB_VIEW_TEXT_SIZE_SP);
         textView.setTextColor(tabTextColor);

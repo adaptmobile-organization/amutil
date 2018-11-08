@@ -2,8 +2,6 @@ package dk.adaptmobile.amutil.system;
 
 import android.util.Log;
 
-import dk.adaptmobile.amutil.date.AMDateUtil;
-
 /**
  * Prints messages from the application to logcat
  */
@@ -14,6 +12,9 @@ public class L {
      * @param message The string to be logged
      */
     public static void og(String message) {
+        if(message == null) {
+            message = "null";
+        }
         String callerClassName = new Exception().getStackTrace()[1].getClassName();
         Log.d(callerClassName, message);
     }
@@ -33,6 +34,12 @@ public class L {
      * @param message The string to be logged
      */
     public static void og(String tag, String message) {
+        if(tag == null) {
+            tag = "null";
+        }
+        if(message == null) {
+            message = "null";
+        }
         Log.d(tag, message);
     }
 
